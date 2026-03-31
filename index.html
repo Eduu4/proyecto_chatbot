@@ -2,52 +2,131 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Pro</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Quiz interactivo</span>
+        <h1>Presentación educativa</h1>
+        <p>Demuestra un juego de preguntas dinámico con feedback inmediato, estadísticas y una experiencia visual moderna.</p>
+        <div class="hero-stats">
+          <div>
+            <strong>5</strong>
+            <span>Materias</span>
+          </div>
+          <div>
+            <strong>3</strong>
+            <span>Niveles</span>
+          </div>
+          <div>
+            <strong>+100</strong>
+            <span>Preguntas</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <h2>Responde rápido</h2>
+          <p>Elige materia, selecciona nivel y comprueba tus resultados en tiempo real.</p>
+        </div>
+      </div>
+    </header>
 
-<div class="container">
+    <main class="main-grid">
+      <section class="panel card" id="config">
+        <div class="panel-header">
+          <span class="tag">Inicio</span>
+          <h2>Genera tu quiz</h2>
+        </div>
 
-  <h1>Quiz de Estudio</h1>
+        <p class="panel-copy">Personaliza el cuestionario para una presentación más completa.</p>
 
-  <!-- CONFIGURACIÓN -->
-  <div id="config">
-    <label>Materia:</label>
-    <select id="materia">
-      <option value="matematicas">Matemáticas</option>
-      <option value="historia">Historia</option>
-      <option value="programacion">Programación</option>
-      <option value="biologia">Biología</option>
-      <option value="ingles">Inglés</option>
-    </select>
+        <label for="materia">Materia</label>
+        <select id="materia">
+          <option value="matematicas">Matemáticas</option>
+          <option value="historia">Historia</option>
+          <option value="programacion">Programación</option>
+          <option value="biologia">Biología</option>
+          <option value="ingles">Inglés</option>
+        </select>
 
-    <label>Nivel:</label>
-    <select id="nivel">
-      <option value="basico">Básico</option>
-      <option value="intermedio">Intermedio</option>
-      <option value="avanzado">Avanzado</option>
-    </select>
+        <label for="nivel">Nivel</label>
+        <select id="nivel">
+          <option value="basico">Básico</option>
+          <option value="intermedio">Intermedio</option>
+          <option value="avanzado">Avanzado</option>
+        </select>
 
-    <button onclick="iniciarQuiz()">Empezar</button>
+        <label for="cantidad">Número de preguntas</label>
+        <input id="cantidad" type="number" min="3" max="10" value="5">
+
+        <button id="startBtn" type="button" class="primary-btn">Iniciar Quiz</button>
+
+        <div class="subject-info">
+          <strong id="subjectName">Matemáticas</strong>
+          <p id="subjectDescription">Practica operaciones, lógica y pensamiento numérico con preguntas seleccionadas según tu nivel.</p>
+        </div>
+      </section>
+
+      <section class="panel card hidden" id="quiz">
+        <div class="panel-header">
+          <span class="tag" id="indicadorNivel">Básico</span>
+          <h2>Pregunta rápida</h2>
+        </div>
+
+        <div class="progress-block">
+          <div class="progress-label">
+            <span id="contador">0</span> / <span id="total">0</span>
+          </div>
+          <div class="progress-bar">
+            <div id="barraProgreso"></div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <h3 id="pregunta"></h3>
+          <div id="opciones" class="options-grid"></div>
+        </div>
+
+        <div class="quiz-actions">
+          <button id="siguiente" type="button" class="secondary-btn" disabled>Siguiente pregunta</button>
+        </div>
+      </section>
+
+      <section class="panel card hidden" id="resultado">
+        <div class="result-hero">
+          <span class="tag tag-success">¡Terminado!</span>
+          <h2>Tu puntaje</h2>
+          <p id="puntaje">Acertaste 0 de 0 preguntas</p>
+        </div>
+
+        <div class="result-grid">
+          <div class="result-card">
+            <strong id="aciertos">0</strong>
+            <span>Aciertos</span>
+          </div>
+          <div class="result-card">
+            <strong id="errores">0</strong>
+            <span>Errores</span>
+          </div>
+          <div class="result-card">
+            <strong id="accuracy">0%</strong>
+            <span>Precisión</span>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button id="reiniciar" type="button" class="secondary-btn">Reiniciar</button>
+          <button id="volver" type="button" class="primary-btn">Volver al inicio</button>
+        </div>
+      </section>
+    </main>
   </div>
 
-  <!-- QUIZ -->
-  <div id="quiz" class="hidden">
-    <h2 id="pregunta"></h2>
-    <div id="opciones"></div>
-    <button id="siguiente">Siguiente</button>
-  </div>
-
-  <!-- RESULTADO -->
-  <div id="resultado" class="hidden">
-    <h2>Resultado</h2>
-    <p id="puntaje"></p>
-    <button onclick="reiniciar()">Volver</button>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
