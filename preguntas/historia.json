@@ -1,0 +1,20 @@
+[
+  {
+    "nivel": "basico",
+    "pregunta": "¿Quién descubrió América?",
+    "opciones": ["Colón", "Napoleón", "Bolívar", "San Martín"],
+    "correcta": 0
+  },
+  {
+    "nivel": "intermedio",
+    "pregunta": "¿En qué año fue la independencia de Paraguay?",
+    "opciones": ["1811", "1800", "1820", "1850"],
+    "correcta": 0
+  },
+  {
+    "nivel": "avanzado",
+    "pregunta": "¿Qué guerra enfrentó Paraguay entre 1864 y 1870?",
+    "opciones": ["Guerra del Chaco", "Triple Alianza", "Guerra Mundial", "Independencia"],
+    "correcta": 1
+  }
+]

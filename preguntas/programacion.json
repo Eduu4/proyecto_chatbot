@@ -1,0 +1,20 @@
+[
+  {
+    "nivel": "basico",
+    "pregunta": "¿Qué es HTML?",
+    "opciones": ["Lenguaje de marcado", "Base de datos", "Servidor", "SO"],
+    "correcta": 0
+  },
+  {
+    "nivel": "intermedio",
+    "pregunta": "¿Qué hace JavaScript?",
+    "opciones": ["Diseño", "Interactividad", "Base de datos", "Servidor"],
+    "correcta": 1
+  },
+  {
+    "nivel": "avanzado",
+    "pregunta": "¿Qué es una API?",
+    "opciones": ["Interfaz de programación", "Lenguaje", "Framework", "Base de datos"],
+    "correcta": 0
+  }
+]

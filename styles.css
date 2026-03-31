@@ -1,0 +1,35 @@
+body {
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+}
+
+select, button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+#opciones button {
+  background: #334155;
+  color: white;
+  border: none;
+  margin: 5px 0;
+}
+
+.correcta { background: green !important; }
+.incorrecta { background: red !important; }
+
+.hidden { display: none; }

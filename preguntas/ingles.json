@@ -1,0 +1,20 @@
+[
+  {
+    "nivel": "basico",
+    "pregunta": "Traducción de 'Hola'",
+    "opciones": ["Bye", "Hello", "Thanks", "Please"],
+    "correcta": 1
+  },
+  {
+    "nivel": "intermedio",
+    "pregunta": "Pasado de 'go'",
+    "opciones": ["goed", "went", "goes", "gone"],
+    "correcta": 1
+  },
+  {
+    "nivel": "avanzado",
+    "pregunta": "¿Qué es un phrasal verb?",
+    "opciones": ["Verbo compuesto", "Sustantivo", "Adjetivo", "Pronombre"],
+    "correcta": 0
+  }
+]

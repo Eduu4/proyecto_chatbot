@@ -1,0 +1,20 @@
+[
+  {
+    "nivel": "basico",
+    "pregunta": "¿2 + 2?",
+    "opciones": ["3", "4", "5", "6"],
+    "correcta": 1
+  },
+  {
+    "nivel": "intermedio",
+    "pregunta": "¿12 x 3?",
+    "opciones": ["36", "30", "33", "39"],
+    "correcta": 0
+  },
+  {
+    "nivel": "avanzado",
+    "pregunta": "¿Derivada de x²?",
+    "opciones": ["x", "2x", "x²", "2"],
+    "correcta": 1
+  }
+]

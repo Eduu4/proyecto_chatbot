@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Pro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Quiz de Estudio</h1>
+
+  <!-- CONFIGURACIÓN -->
+  <div id="config">
+    <label>Materia:</label>
+    <select id="materia">
+      <option value="matematicas">Matemáticas</option>
+      <option value="historia">Historia</option>
+      <option value="programacion">Programación</option>
+      <option value="biologia">Biología</option>
+      <option value="ingles">Inglés</option>
+    </select>
+
+    <label>Nivel:</label>
+    <select id="nivel">
+      <option value="basico">Básico</option>
+      <option value="intermedio">Intermedio</option>
+      <option value="avanzado">Avanzado</option>
+    </select>
+
+    <button onclick="iniciarQuiz()">Empezar</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="hidden">
+    <h2 id="pregunta"></h2>
+    <div id="opciones"></div>
+    <button id="siguiente">Siguiente</button>
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="resultado" class="hidden">
+    <h2>Resultado</h2>
+    <p id="puntaje"></p>
+    <button onclick="reiniciar()">Volver</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

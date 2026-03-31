@@ -1,0 +1,20 @@
+[
+  {
+    "nivel": "basico",
+    "pregunta": "¿Qué estudia la biología?",
+    "opciones": ["La vida", "Los números", "El espacio", "La historia"],
+    "correcta": 0
+  },
+  {
+    "nivel": "intermedio",
+    "pregunta": "¿Qué célula tiene núcleo?",
+    "opciones": ["Procariota", "Eucariota", "Bacteria", "Virus"],
+    "correcta": 1
+  },
+  {
+    "nivel": "avanzado",
+    "pregunta": "¿En qué fase ocurre la mitosis?",
+    "opciones": ["Profase", "Metafase", "Anafase", "Todas"],
+    "correcta": 3
+  }
+]
