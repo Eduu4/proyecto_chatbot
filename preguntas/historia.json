@@ -1,20 +1,17 @@
 [
-  {
-    "nivel": "basico",
-    "pregunta": "¿Quién descubrió América?",
-    "opciones": ["Colón", "Napoleón", "Bolívar", "San Martín"],
-    "correcta": 0
-  },
-  {
-    "nivel": "intermedio",
-    "pregunta": "¿En qué año fue la independencia de Paraguay?",
-    "opciones": ["1811", "1800", "1820", "1850"],
-    "correcta": 0
-  },
-  {
-    "nivel": "avanzado",
-    "pregunta": "¿Qué guerra enfrentó Paraguay entre 1864 y 1870?",
-    "opciones": ["Guerra del Chaco", "Triple Alianza", "Guerra Mundial", "Independencia"],
-    "correcta": 1
-  }
+  { "nivel": "basico", "pregunta": "¿Quién descubrió América?", "opciones": ["Colón", "Napoleón", "Bolívar", "San Martín"], "correcta": 0 },
+  { "nivel": "basico", "pregunta": "¿Cuál es la capital de Francia?", "opciones": ["Roma", "Madrid", "París", "Berlín"], "correcta": 2 },
+  { "nivel": "basico", "pregunta": "¿Cuál fue el primer hombre en la Luna?", "opciones": ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin", "Michael Collins"], "correcta": 1 },
+  { "nivel": "basico", "pregunta": "¿En qué continente está Egipto?", "opciones": ["Europa", "Asia", "África", "Oceanía"], "correcta": 2 },
+  { "nivel": "basico", "pregunta": "¿Qué invento se atribuye a los hermanos Wright?", "opciones": ["Teléfono", "Avión", "Radio", "Telégrafo"], "correcta": 1 },
+  { "nivel": "intermedio", "pregunta": "¿En qué año fue la independencia de Paraguay?", "opciones": ["1811", "1800", "1820", "1850"], "correcta": 0 },
+  { "nivel": "intermedio", "pregunta": "¿Qué imperio construyó Machu Picchu?", "opciones": ["Maya", "Azteca", "Inca", "Romano"], "correcta": 2 },
+  { "nivel": "intermedio", "pregunta": "¿Quién lideró la independencia de México?", "opciones": ["Simón Bolívar", "Miguel Hidalgo", "Josefina Barrios", "Francisco Pizarro"], "correcta": 1 },
+  { "nivel": "intermedio", "pregunta": "¿Qué revolución ocurrió en 1789?", "opciones": ["Industrial", "Rusa", "Francesa", "China"], "correcta": 2 },
+  { "nivel": "intermedio", "pregunta": "¿Qué civilización construyó las pirámides de Giza?", "opciones": ["Griega", "Egipcia", "Mesopotámica", "Persa"], "correcta": 1 },
+  { "nivel": "avanzado", "pregunta": "¿Qué guerra enfrentó Paraguay entre 1864 y 1870?", "opciones": ["Guerra del Chaco", "Triple Alianza", "Guerra Mundial", "Independencia"], "correcta": 1 },
+  { "nivel": "avanzado", "pregunta": "¿Qué tratado puso fin a la Primera Guerra Mundial?", "opciones": ["Versalles", "Paz de Westfalia", "Trianón", "Utrecht"], "correcta": 0 },
+  { "nivel": "avanzado", "pregunta": "¿Quién fue emperador romano durante la mayor expansión del imperio?", "opciones": ["Augusto", "Nerón", "Trajano", "Marco Aurelio"], "correcta": 2 },
+  { "nivel": "avanzado", "pregunta": "¿Cuál fue el propósito principal de las Cruzadas?", "opciones": ["Comercio", "Conquistar Asia", "Recuperar Tierra Santa", "Explorar nuevas rutas"], "correcta": 2 },
+  { "nivel": "avanzado", "pregunta": "¿Qué evento desencadenó la Segunda Guerra Mundial?", "opciones": ["Guerra de Corea", "Invasión de Polonia", "Bombardeo de Pearl Harbor", "Revolución Rusa"], "correcta": 1 }
 ]

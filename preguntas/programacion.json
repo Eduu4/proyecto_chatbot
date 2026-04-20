@@ -1,20 +1,17 @@
 [
-  {
-    "nivel": "basico",
-    "pregunta": "¿Qué es HTML?",
-    "opciones": ["Lenguaje de marcado", "Base de datos", "Servidor", "SO"],
-    "correcta": 0
-  },
-  {
-    "nivel": "intermedio",
-    "pregunta": "¿Qué hace JavaScript?",
-    "opciones": ["Diseño", "Interactividad", "Base de datos", "Servidor"],
-    "correcta": 1
-  },
-  {
-    "nivel": "avanzado",
-    "pregunta": "¿Qué es una API?",
-    "opciones": ["Interfaz de programación", "Lenguaje", "Framework", "Base de datos"],
-    "correcta": 0
-  }
+  { "nivel": "basico", "pregunta": "¿Qué es HTML?", "opciones": ["Lenguaje de marcado", "Base de datos", "Servidor", "SO"], "correcta": 0 },
+  { "nivel": "basico", "pregunta": "¿Qué se usa para dar estilo a una página web?", "opciones": ["HTML", "CSS", "JSON", "SQL"], "correcta": 1 },
+  { "nivel": "basico", "pregunta": "¿Qué significa 'JS'?", "opciones": ["JavaSheet", "JavaServer", "JavaScript", "JSON"], "correcta": 2 },
+  { "nivel": "basico", "pregunta": "¿Cuál es la etiqueta principal de HTML?", "opciones": ["<body>", "<html>", "<head>", "<div>"], "correcta": 1 },
+  { "nivel": "basico", "pregunta": "¿Cómo se escribe un comentario en JavaScript?", "opciones": ["<!-- -->", "/* */", "//", "** **"], "correcta": 2 },
+  { "nivel": "intermedio", "pregunta": "¿Qué hace JavaScript?", "opciones": ["Diseño", "Interactividad", "Base de datos", "Servidor"], "correcta": 1 },
+  { "nivel": "intermedio", "pregunta": "¿Cuál es un ejemplo de bucle en JavaScript?", "opciones": ["if", "for", "const", "return"], "correcta": 1 },
+  { "nivel": "intermedio", "pregunta": "¿Qué tipo de dato guarda texto?", "opciones": ["number", "boolean", "string", "object"], "correcta": 2 },
+  { "nivel": "intermedio", "pregunta": "¿Cuál es la función correcta para mostrar un mensaje en la consola?", "opciones": ["alert()", "console.log()", "print()", "echo()"], "correcta": 1 },
+  { "nivel": "intermedio", "pregunta": "¿Qué palabra clave crea una variable en JavaScript?", "opciones": ["dim", "var", "let", "set"], "correcta": 2 },
+  { "nivel": "avanzado", "pregunta": "¿Qué es una API?", "opciones": ["Interfaz de programación", "Lenguaje", "Framework", "Base de datos"], "correcta": 0 },
+  { "nivel": "avanzado", "pregunta": "¿Qué significa 'JSON'?", "opciones": ["Java Standard Output Network", "JavaScript Object Notation", "Joint System Object Namespace", "JavaScript Online Network"], "correcta": 1 },
+  { "nivel": "avanzado", "pregunta": "¿Qué estructura representa un conjunto clave-valor en JavaScript?", "opciones": ["Array", "String", "Object", "Function"], "correcta": 2 },
+  { "nivel": "avanzado", "pregunta": "¿Qué palabra clave define una función?", "opciones": ["func", "function", "define", "method"], "correcta": 1 },
+  { "nivel": "avanzado", "pregunta": "¿Cuál es el resultado de 3 + '4' en JavaScript?", "opciones": ["7", "34", "undefined", "NaN"], "correcta": 1 }
 ]

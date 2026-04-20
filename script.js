@@ -20,6 +20,12 @@ const erroresEl = document.getElementById('errores');
 const accuracyEl = document.getElementById('accuracy');
 const reiniciarBtn = document.getElementById('reiniciar');
 const volverBtn = document.getElementById('volver');
+const chatToggleBtn = document.getElementById('chatToggle');
+const chatDrawer = document.getElementById('chatDrawer');
+const chatCloseBtn = document.getElementById('chatClose');
+const chatForm = document.getElementById('chatForm');
+const chatInput = document.getElementById('chatInput');
+const chatMessages = document.getElementById('chatMessages');
 
 let preguntas = [];
 let indice = 0;
@@ -55,7 +61,186 @@ nivelSelect.addEventListener('change', actualizarInfo);
 siguienteBtn.addEventListener('click', siguientePregunta);
 reiniciarBtn.addEventListener('click', reiniciar);
 volverBtn.addEventListener('click', volverAlInicio);
-window.addEventListener('DOMContentLoaded', actualizarInfo);
+chatToggleBtn.addEventListener('click', toggleChatDrawer);
+chatCloseBtn.addEventListener('click', closeChatDrawer);
+chatForm.addEventListener('submit', handleChatSubmit);
+window.addEventListener('DOMContentLoaded', () => {
+  actualizarInfo();
+  mostrarMensajeInicialChat();
+});
+
+const respuestasFAQ = [
+  // Preguntas sobre el Quiz
+  { 
+    palabras: ['como', 'como funciona', 'funciona', 'como usar', 'como empiezo', 'como inicio'],
+    categoria: 'uso',
+    respuesta: '📖 Así funciona:\n1. Selecciona una materia (Matemáticas, Historia, Programación, Biología o Inglés)\n2. Elige tu nivel (Básico, Intermedio o Avanzado)\n3. Define cuántas preguntas quieres responder (1-10)\n4. ¡Haz clic en "Iniciar Quiz" y responde lo más rápido que puedas!'
+  },
+  { 
+    palabras: ['cuales', 'materias', 'temas', 'asignaturas', 'que puedo practicar'],
+    categoria: 'contenido',
+    respuesta: '📚 Puedes practicar en estas 5 materias:\n• Matemáticas\n• Historia\n• Programación\n• Biología\n• Inglés\n\nCada materia tiene preguntas en 3 niveles de dificultad.'
+  },
+  { 
+    palabras: ['nivel', 'niveles', 'basico', 'intermedio', 'avanzado', 'dificultad'],
+    categoria: 'niveles',
+    respuesta: '⚙️ Disponemos de 3 niveles de dificultad:\n• Básico: Conceptos fundamentales\n• Intermedio: Conocimiento más profundo\n• Avanzado: Desafíos para expertos\n\nElige según tu experiencia en el tema.'
+  },
+  { 
+    palabras: ['resultado', 'resultados', 'puntaje', 'calificacion', 'score', 'puntuacion'],
+    categoria: 'resultados',
+    respuesta: '📊 Al terminar el quiz recibirás:\n• Número de aciertos y errores\n• Porcentaje de precisión\n• Opción de reintentar o cambiar de materia\n\n¡Los resultados se muestran al instante!'
+  },
+  { 
+    palabras: ['cuantas', 'preguntas', 'cantidad', 'maximas', 'limite'],
+    categoria: 'contenido',
+    respuesta: '📝 Puedes elegir entre 1 y 10 preguntas por quiz. Si seleccionas una cantidad mayor a las disponibles en ese nivel, se te mostrará un aviso.'
+  },
+  { 
+    palabras: ['diferencia', 'distinto', 'varia', 'cambia', 'cada vez'],
+    categoria: 'uso',
+    respuesta: '🔄 Las preguntas se mezclan aleatoriamente cada vez que inicias un quiz. ¡Nunca tendrás el mismo orden!'
+  },
+  { 
+    palabras: ['tiempo', 'limite', 'duracion', 'cuanto tiempo'],
+    categoria: 'uso',
+    respuesta: '⏱️ No hay límite de tiempo. Responde a tu propio ritmo. El quiz mide tu precisión, no tu velocidad.'
+  },
+  { 
+    palabras: ['calificacion', 'pasar', 'aprobado', 'desaprobado', 'minimo'],
+    categoria: 'resultados',
+    respuesta: '✅ No hay calificación mínima obligatoria. El objetivo es practicar y aprender. Tu resultado es personal y solo sirve como referencia de tu desempeño.'
+  },
+  // Preguntas generales
+  { 
+    palabras: ['que es', 'que', 'quién', 'cual es el objetivo', 'proposito'],
+    categoria: 'general',
+    respuesta: '🎯 Quiz Pro es una plataforma de práctica educativa interactiva. Diseñada para reforzar conocimientos en 5 materias diferentes con preguntas dinámicas y feedback inmediato.'
+  },
+  { 
+    palabras: ['contacto', 'soporte', 'ayuda', 'problema', 'error', 'no funciona', 'bug'],
+    categoria: 'soporte',
+    respuesta: '💬 Si tienes problemas o sugerencias:\n📧 Email: soporte@quizpro.com\n📞 Teléfono: 0987654321\n🕐 Horarios: Lunes a viernes 9:00-18:00\n\n¿Hay algo específico que no funcione?'
+  },
+  { 
+    palabras: ['gratis', 'costo', 'precio', 'pago', 'premium'],
+    categoria: 'general',
+    respuesta: '💰 Este quiz es completamente gratuito. Diseñado como herramienta educativa sin costo de acceso.'
+  }
+];
+
+// Función para escalar a soporte
+const respuestasEscalacion = {
+  soporte: '💬 Parece que necesitas más ayuda de la que puedo proporcionar. Te recomiendo contactar con nuestro equipo de soporte:\n📧 soporte@quizpro.com\n📞 +34 900 123 456\n\n¿Hay algo más en lo que pueda ayudarte?',
+  problema: '⚠️ Si algo no está funcionando correctamente, por favor contacta con nuestro equipo técnico:\n📧 soporte@quizpro.com\n📞 +34 900 123 456\n\nDescribe el problema para que podamos ayudarte mejor.'
+};
+
+function normalizeTexto(texto) {
+  return texto
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Elimina acentos más robustamente
+    .replace(/[.,!?¿¡;:()[\]{}]/g, ' ') // Símbolos de puntuación
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function toggleChatDrawer() {
+  chatDrawer.classList.toggle('open');
+  const abierto = chatDrawer.classList.contains('open');
+  chatDrawer.setAttribute('aria-hidden', abierto ? 'false' : 'true');
+  if (abierto) {
+    chatInput.focus();
+  }
+}
+
+function closeChatDrawer() {
+  chatDrawer.classList.remove('open');
+  chatDrawer.setAttribute('aria-hidden', 'true');
+}
+
+function mostrarMensajeInicialChat() {
+  addChatMessage('👋 ¡Hola! Soy tu asistente de Quiz Pro. Puedo ayudarte con:\n\n📖 Cómo usar el quiz\n📚 Materias disponibles\n⚙️ Niveles de dificultad\n📊 Resultados\n💬 Soporte técnico\n\n¿Con qué necesitas ayuda?', 'bot');
+}
+
+function handleChatSubmit(event) {
+  event.preventDefault();
+  const texto = chatInput.value.trim();
+  if (!texto) return;
+  addChatMessage(texto, 'user');
+  chatInput.value = '';
+  setTimeout(() => {
+    const respuesta = generarRespuestaChat(texto);
+    addChatMessage(respuesta, 'bot');
+  }, 300);
+}
+
+function generarRespuestaChat(texto) {
+  const textoNormalizado = normalizeTexto(texto);
+  
+  // Búsqueda exacta y flexible
+  let mejorCoincidencia = null;
+  let puntajeMejor = 0;
+
+  for (const item of respuestasFAQ) {
+    for (const palabra of item.palabras) {
+      const palabraNormalizada = normalizeTexto(palabra);
+      if (textoNormalizado.includes(palabraNormalizada)) {
+        mejorCoincidencia = item;
+        puntajeMejor = 2; // Coincidencia fuerte
+        break;
+      }
+    }
+    if (puntajeMejor === 2) break;
+  }
+
+  // Si no hay coincidencia exacta, buscar palabras parciales
+  if (!mejorCoincidencia) {
+    for (const item of respuestasFAQ) {
+      for (const palabra of item.palabras) {
+        const palabraNormalizada = normalizeTexto(palabra);
+        if (palabraNormalizada.length > 3 && textoNormalizado.includes(palabraNormalizada.substring(0, 3))) {
+          if (puntajeMejor < 1) {
+            mejorCoincidencia = item;
+            puntajeMejor = 1; // Coincidencia débil
+          }
+        }
+      }
+    }
+  }
+
+  // Si encontramos coincidencia, retornamos la respuesta
+  if (mejorCoincidencia) {
+    return mejorCoincidencia.respuesta;
+  }
+
+  // Detectar si el usuario necesita soporte técnico
+  const textoSoporte = ['error', 'no funciona', 'bug', 'problema', 'falla', 'crash'];
+  if (textoSoporte.some(t => textoNormalizado.includes(t))) {
+    return respuestasEscalacion.problema;
+  }
+
+  // Respuesta por defecto con sugerencias
+  const sugerencias = [
+    '💡 Prueba preguntando: "¿Cómo funciona el quiz?"',
+    '💡 Prueba preguntando: "¿Qué materias hay disponibles?"',
+    '💡 Prueba preguntando: "¿Cuáles son los niveles?"',
+    '💡 Prueba preguntando: "¿Cómo veo mis resultados?"',
+    '💡 Prueba preguntando: "¿Hay límite de tiempo?"'
+  ];
+
+  const sugerenciaAleatoria = sugerencias[Math.floor(Math.random() * sugerencias.length)];
+  
+  return `❓ No estoy completamente seguro de lo que preguntás. ¿Podrías reformular tu pregunta de forma más clara?\n\n${sugerenciaAleatoria}\n\nSi necesitas hablar con un especialista, usa la opción de soporte técnico.`;
+}
+
+function addChatMessage(texto, tipo) {
+  const mensaje = document.createElement('div');
+  mensaje.className = `chat-message ${tipo}`;
+  mensaje.textContent = texto;
+  chatMessages.appendChild(mensaje);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
 function actualizarInfo() {
   const materia = materiaSelect.value;
@@ -70,18 +255,30 @@ function actualizarInfo() {
 async function iniciarQuiz() {
   const materia = materiaSelect.value;
   const nivel = nivelSelect.value;
-  const cantidad = Number(cantidadInput.value) || 5;
-
-  if (cantidad < 3 || cantidad > 10) {
-    alert('Elige entre 3 y 10 preguntas.');
-    return;
+  let cantidadDeseada = Number(cantidadInput.value);
+  if (!Number.isInteger(cantidadDeseada) || cantidadDeseada < 1) {
+    cantidadDeseada = 1;
+  }
+  if (cantidadDeseada > 10) {
+    cantidadDeseada = 10;
   }
 
   try {
     const res = await fetch(`preguntas/${materia}.json`);
     const data = await res.json();
+    const preguntasNivel = mezclar(data.filter(p => p.nivel === nivel));
 
-    preguntas = mezclar(data.filter(p => p.nivel === nivel)).slice(0, cantidad);
+    if (preguntasNivel.length === 0) {
+      alert('No hay preguntas disponibles para este nivel.');
+      return;
+    }
+
+    if (cantidadDeseada > preguntasNivel.length) {
+      alert(`Solo hay ${preguntasNivel.length} preguntas disponibles para ${nivel}. Se cargarán todas.`);
+    }
+
+    const cantidad = Math.min(cantidadDeseada, preguntasNivel.length);
+    preguntas = preguntasNivel.slice(0, cantidad);
   } catch (error) {
     console.error(error);
     alert('Error cargando las preguntas. Intenta nuevamente.');

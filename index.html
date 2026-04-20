@@ -11,7 +11,7 @@
     <header class="hero">
       <div class="hero-copy">
         <span class="eyebrow">Quiz interactivo</span>
-        <h1>Presentación educativa</h1>
+        <h1>Presentación</h1>
         <p>Demuestra un juego de preguntas dinámico con feedback inmediato, estadísticas y una experiencia visual moderna.</p>
         <div class="hero-stats">
           <div>
@@ -61,8 +61,8 @@
           <option value="avanzado">Avanzado</option>
         </select>
 
-        <label for="cantidad">Número de preguntas</label>
-        <input id="cantidad" type="number" min="3" max="10" value="5">
+        <label for="cantidad">Número de preguntas (1-10)</label>
+        <input id="cantidad" type="number" min="1" max="10" value="5">
 
         <button id="startBtn" type="button" class="primary-btn">Iniciar Quiz</button>
 
@@ -125,6 +125,24 @@
         </div>
       </section>
     </main>
+  </div>
+
+  <div class="chat-widget">
+    <button id="chatToggle" class="chat-toggle-btn" aria-label="Abrir chat">Chat</button>
+    <aside id="chatDrawer" class="chat-drawer" aria-hidden="true">
+      <div class="chat-header">
+        <div>
+          <strong>Asistente</strong>
+          <p>Preguntas frecuentes</p>
+        </div>
+        <button id="chatClose" class="chat-close" aria-label="Cerrar chat">×</button>
+      </div>
+      <div id="chatMessages" class="chat-messages"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" type="text" placeholder="Escribe tu pregunta..." autocomplete="off">
+        <button type="submit" class="primary-btn">Enviar</button>
+      </form>
+    </aside>
   </div>
 
   <script src="script.js"></script>
